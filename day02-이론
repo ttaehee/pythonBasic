@@ -1,0 +1,218 @@
+2022-08-02 Day02(python)
+
+notepad : 메모장대용
+대부분의 언어지원
+
+파이썬 : 배열 맨 끝에 ',' 들어가도 오류안남
+
+cmd창에 블럭 -> 실행 중지됨
+=> enter 눌러서 선택풀기
+
+cmd 창에서 복사
+
+numpy에서는 세로로 추출하는 기능도 제공
+
+개발자 노트북 I7(최소머리 4개) 추천
+I9는 발열심함
+사무용은 I3,I5(듀얼)
+
+#import random
+난수선택의 기본값
+random.seed
+random.random(0,1) : 0이상 1미만
+random.randint(0,1) : 0이상 1이하
+
+#리스트
+[]
+
+#리스트추가
+append(value) : 마지막에 value 요소 추가
+insert(idx, value) : idx위치에 value 요소 추가
+
+#정렬
+sort() : 정렬
+reverse() : 리스트요소 반대로 뒤집기
+
+sort(reverse = True)
+
+#리스트수정
+a = [1,2,3]
+
+인덱싱으로
+a[1] = ['c','d,'e']
+a 출력 : [1, ['c','d,'e'], 'd', 'e', 4]
+리스트통째가 요소로 들어감
+
+슬라이싱으로
+a[1:2] = ['c','d,'e']
+a 출력 : [1, 'c','d,'e', 4]
+
+a[1:2] 대상은 a[1]과 같지만 범위가 다름
+항목을 뽑아서 하나씩 요소로 들어가게됨
+
+#리스트삭제
+1. pop() : 마지막요소 반환+삭제
+pop(idx) : idx요소 반환+삭제
+2. remove(value) : value와 일치하는 첫번째요소 삭제(반환x)
+3. del a[1] : 변수명a[1]에 해당하는 값을 지움 (잘 안씀)
+
+#
+count(value) : value와 일치하는 개수 반환
+
+#
+a = [1,2,3]
+a.extend([4,5]) : 새로운애가 아닌 a에 [4,5] 더해줌
+a 출력 : [1,2,3,4,5]
+*a+b는 a도 b도 아닌 새로운애가 됨
+
+#역순
+arr[::-1] : 복제한 애를 역순으로, reverse()가 있기때문에 잘 안씀
+arr.reverse() : 원본을 건드림
+
+
+#join()
+arr = ["a","b","c"]
+"-".join(arr)
+출력 : a-b-c
+참고) arr = [1,2,3] 일 시에는 오류! 문자열로 변경해주기
+
+#tuple 튜플
+(,,)
+데이터변경 불가능, 조회만 가능! = 값 전달용으로 사용
+소괄호로 안묶어도 자동으로 묶임
+print없이, 괄호없이 콤마로 데이터쓰면 값을 정의하는줄 알고 무조건 튜플로 인식
+print(1,2) -> 출력
+1,2 -> 튜플로 인식
+
+리스트의 인덱싱, 슬라이싱방법과 동일
+값 수정 불필요한 경우, 리스트보다 튜플 사용이 효율적 (메모리 사용 더 적음)
+'tuple' object does not support item assignment
+
+#시퀀스 타입간의 변환
+개발 시에는 사용 잘안함
+
+myStr = 'python'
+
+list(myStr) #문자열을 리스트로
+출력 : ['p','y','t','h','o','n']
+
+tuple(myStr) #문자열을 튜플로
+출력 : ['p','y','t','h','o','n']
+
+
+#set(집합자료형)
+중복안됨, 순서없음, {,,}
+
+#set 생성
+1. a = {'a','b','c'}
+2. a= set('abc')
+
+#set 추가
+set.add(value)
+여러개 add
+set.update(container)
+
+#set 연산
+차집합 -, difference
+합집합 |, union
+교집합 &, intersection
+
+#데이터변환 (세트를 리스트, 튜플로)
+s = set([1,2,3]) #list to set
+
+l = list(s) #set to list
+
+t = tuple(s) #set to tuple
+
+#딕셔너리 생성
+key값은 고유한 값, 변경불가능한 객체(immutable object)
+ex) tuple, 정수
+
+1. {key:value, key:value}
+2. dict(key=value, key=value)
+dict()사용 시 key는 문자열만 가능
+
+#딕셔너리 조회
+1. a[key] : key값 존재하지 않으면 에러
+2. a.get(key) : key값 존재하지 않으면 None
+
+#딕셔너리 추가, 수정
+1. a[key] = value
+key가 있으면 수정 ,없으면 추가
+2. a.update(dict) : 여러개
+
+#딕셔너리 삭제
+1. del a[key]
+2. a.pop(key)
+3. a.clear()
+clear() 대신에 덮어쓰는 것 추천
+a = dict() : 새로운 사전객체를 만들어서 a에 덮어씀 = 빈객체 생성, 기존a의 데이터는 존재하지만 아무도 가리키지않는 쓰레기객체가 됨
+a.clear() : 기존 내부데이터 비움, 잘 안씀 => why? 지울 때도 CPU 사용하는데 지우고 재할당하느니 덮어쓰기
+
+#딕셔너리 관련 함수
+keys() : key 정보들
+values() : value 정보들
+items() : key,value 정보들 쌍으로
+
+in, not in => return bool
+'A' in d : d딕셔너리 안에 'A'라는 key가 있니
+'A' not in d : d딕셔너리 안에 'A'라는 key가 없니
+
+a.keys
+출력 : ([key1, key2, key3])
+list(a.keys)
+출력 : [key1, key2, key3]
+
+
+리스트 [,,]
+튜플(,,)
+세트{,,}
+딕셔너리{:, :}
+
+
+#if조건문
+들여쓰기
+if condition:
+	statement
+else:
+	statement
+
+#3항연산자
+a=참일때값 if condition else 거짓일때값
+
+
+#내장함수와 변수
+sum()내장함수가 있기때문에 변수로 sum 사용하면 안됨
+
+
+#for반복문
+for 변수 in iterable(list, tuple, str)
+	statement
+
+#
+break : 현재 속한 반복문 종료
+continue : 현재 반복내부의 나머지 코드 건너뛰기
+pass : 껍데기만, 무한반복문 작성 시 사용
+
+#comprehensions
+for문을 사용해서 새로운 list를 만듬
+개발 시 자주 사용
+l = [x**2 for x in range(10)]
+range(10)의 값은 x 로 받아서 x의 제곱으로 리스트를 만듬
+
+
+#함수
+모듈만들기에 필수적
+
+def 함수명(arg):
+	statement
+	return
+	
+print(함수명) : 함수가 실행되는 위치값(주소)
+print(함수명()) : 함수가 실행되는 주소에서 실행해라 = return 값
+
+
+object detection
+
+Object : 할당받은 메모리영역
+함수도 넣고 변수도 넣고
