@@ -1,2 +1,2 @@
 # pythonBasic
-KB IT academy, learn about python
+learn about python
